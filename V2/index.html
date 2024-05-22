@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator</title>
+  <!-- Voeg de Vue.js-bibliotheek toe -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    /* Voeg hier je CSS-stijlen toe */
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #app {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    div {
+      margin-bottom: 15px;
+    }
+
+    span {
+      margin-left: 5px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>🔒 Password Generator</h1>
+    <div>
+      <label for="generatedPassword">Wachtwoord:</label>
+      <input type="text" id="generatedPassword" v-model="password" readonly>
+      <button @click="copyToClipboard">Kopieer</button>
+    </div>
+    <div>
+      <label for="passwordLength">Lengte:</label>
+      <input type="range" id="passwordLength" v-model="settings.length" min="6" :max="maxLength">
+      <span>{{ settings.length }}</span>
+    </div>
+    <!-- Voeg andere instellingen toe zoals het aantal cijfers en symbolen -->
+    <div>
+      <span>Sterkte: {{ strength.text }}</span>
+    </div>
+  </div>
+
+  <!-- Voeg je JavaScript-code toe -->
+  <script>
+    new Vue({
+      el: "#app",
+      data: function() {
+        return {
+          password: "",
+          copied: false,
+          settings: {
+            maxLength: 64,
+            maxDigits: 10,
+            maxSymbols: 10,
+            length: 12,
+            digits: 4,
+            symbols: 2,
+            ambiguous: true
+          }
+        };
+      },
+      computed: {
+        lengthThumbPosition: function() {
+          return (this.settings.length - 6) / (this.settings.maxLength - 6) * 100;
+        },
+        digitsThumbPosition: function() {
+          return (this.settings.digits - 0) / (this.settings.maxDigits - 0) * 100;
+        },
+        symbolsThumbPosition: function() {
+          return (this.settings.symbols - 0) / (this.settings.maxSymbols - 0) * 100;
+        },
+        strength: function() {
+          var count = {
+            excess: 0,
+            upperCase: 0,
+            numbers: 0,
+            symbols: 0
+          };
+
+          var weight = {
+            excess: 3,
+            upperCase: 4,
+            numbers: 5,
+            symbols: 5,
+            combo: 0,
+            flatLower: 0,
+            flatNumber: 0
+          };
+
+          var strength = {
+            text: "",
+            score: 0
+          };
+
+          var baseScore = 30;
+
+          for (i = 0; i < this.password.length; i++) {
+            if (this.password.charAt(i).match(/[A-Z]/g)) {
+              count.upperCase++;
+            }
+            if (this.password.charAt(i).match(/[0-9]/g)) {
+              count.numbers++;
+            }
+            if (this.password.charAt(i).match(/(.*[!,@,#,$,%,^,&,*,?,_,~])/)) {
+              count.symbols++;
+            }
+          }
+
+          count.excess = this.password.length - 6;
+
+          if (count.upperCase && count.numbers && count.symbols) {
+            weight.combo = 25;
+          } else if (
+            (count.upperCase && count.numbers) ||
+            (count.upperCase && count.symbols) ||
+            (count.numbers && count.symbols)
+          ) {
+            weight.combo = 15;
+          }
+
+          if (this.password.match(/^[\sa-z]+$/)) {
+            weight.flatLower = -30;
+          }
+
+          if (this.password.match(/^[\s0-9]+$/)) {
+            weight.flatNumber = -50;
+          }
+
+          var score =
+            baseScore +
+            count.excess * weight.excess +
+            count.upperCase * weight.upperCase +
+            count.numbers * weight.numbers +
+            count.symbols * weight.symbols +
+            weight.combo +
+            weight.flatLower +
+            weight.flatNumber;
+
+          if (score < 30) {
+            strength.text = "😭 zwak";
+            strength.score = 10;
+            return strength;
+          } else if (score >= 30 && score < 75) {
+            strength.text = "😔 gemiddeld";
+            strength.score = 40;
+            return strength;
+          } else if (score >= 75 && score < 150) {
+            strength.text = "😊 sterk";
+            strength.score = 75;
+            return strength;
+          } else {
+            strength.text = "😃 veilig";
+            strength.score = 100;
+            return strength;
+          }
+        }
+      },
+      methods: {
+        copyToClipboard() {
+          var copyElement = document.createElement("textarea");
+          copyElement.style.opacity = "0";
+          copyElement.style.position = "fixed";
+          copyElement.textContent = this.password;
+          var body = document.getElementsByTagName("body")[0];
+          body.appendChild(copyElement);
+          copyElement.select();
+          document.execCommand("copy");
+          body.removeChild(copyElement);
+
+          this.copied = true;
+          setTimeout(() => {
+            this.copied = false;
+          }, 750);
+        }
+      }
+      mounted() {
+    this.generatePassword(); // Hier wordt de generatePassword-methode aangeroepen wanneer de pagina wordt geladen
+  }
+    });
+  </script>
+</body>
+</html>

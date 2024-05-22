@@ -1,0 +1,65 @@
+/* Algemene stijlen */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; /* Lichtgrijze achtergrond */
+  color: #343a40; /* Donkergrijze tekstkleur */
+}
+
+/* Container styling */
+.container {
+  background-color: #ffffff; /* Witte achtergrond */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titel styling */
+h1 {
+  font-size: 2.5rem;
+  color: #007bff; /* Bootstrap primaire kleur */
+}
+
+/* Subtitel styling */
+h2 {
+  font-size: 1.75rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #6c757d; /* Bootstrap secundaire kleur */
+}
+
+/* Checkbox styling */
+.form-check-label {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+/* Range input styling */
+.custom-range {
+  margin-bottom: 20px;
+}
+
+.custom-range + span {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+/* Generate button styling */
+#generateBtn {
+  font-size: 1.25rem;
+  padding: 10px;
+}
+
+/* Password display styling */
+#passwordDisplay {
+  font-size: 1.25rem;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Password strength styling */
+#passwordStrength {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 10px;
+  color: #28a745; /* Bootstrap succes kleur */
+}

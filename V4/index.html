@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <title>Wachtwoordgenerator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Wachtwoordgenerator</h1>
+
+    <fieldset>
+      <legend>Instellingen</legend>
+
+      <p>
+        <label for="wordType">Woord Type:</label>
+        <select id="wordType">
+            <option value="animals">Dieren</option>
+            <option value="sports">Sporten</option>
+            <option value="colors">Kleuren</option>
+            <option value="shapes">Vormen</option>
+        </select>
+      </p>
+
+      <p>
+        <label for="count">Aantal:</label>
+        <input type="range" id="count" min="2" max="4" value="2">
+        <span id="countValue">2</span>
+      </p>
+
+      <p>
+        <label for="numberCount">Aantal nummers:</label>
+        <input type="range" id="numberCount" min="1" max="4" value="1">
+        <span id="numberCountValue">1</span>
+      </p>
+
+      <p>
+        <label for="changeCount">Complexiteit:</label>
+        <input type="range" id="changeCount" min="0" max="3" value="0">
+        <span id="changeCountValue">0</span>
+    </p>
+    </fieldset>
+
+    <button onclick="generatePassword()">Genereer wachtwoord</button>
+
+    <input type="text" id="passwordDisplay" readonly>
+
+    <div id="passwordStrength"></div>
+  </div>
+  
+  <script src="script.js"></script>
+
+</body>
+</html>

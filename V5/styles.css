@@ -1,0 +1,78 @@
+#passwordDisplay {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #000000; 
+  padding: 10px; 
+  font-size: 18px; 
+ 
+  
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    text-align: center;
+    
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #cfcece;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 20px;
+  }
+
+  input[type="range"] {
+    width: 100%; /* Full width */
+    height: 5px; /* Height of the slider track */
+    -webkit-appearance: none; /* Remove default styles */
+    appearance: none;
+    background-color: #ddd; /* Background color of the slider track */
+    border-radius: 5px; /* Rounded corners */
+    outline: none; /* Remove focus outline */
+  }
+  
+  /* Styles for slider thumb */
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default styles */
+    appearance: none;
+    width: 16px; /* Width of the slider thumb */
+    height: 16px; /* Height of the slider thumb */
+    background-color: #000000; /* Color of the slider thumb */
+    border-radius: 50%; /* Rounded shape */
+    cursor: pointer; /* Cursor style */
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    width: 16px; /* Width of the slider thumb */
+    height: 16px; /* Height of the slider thumb */
+    background-color: #007bff; /* Color of the slider thumb */
+    border-radius: 50%; /* Rounded shape */
+    cursor: pointer; /* Cursor style */
+  }
+
+  html, body { 
+    margin: 0;
+    overflow: hidden;
+  }
+
+
+button:hover {
+  animation: rainbow 10s infinite linear;
+}

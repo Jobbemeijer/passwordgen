@@ -1,0 +1,41 @@
+#passwordDisplay {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc; /* You can adjust border properties as needed */
+  padding: 10px; /* You can adjust padding as needed */
+  font-size: 18px; /* You can adjust font size as needed */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    text-align: left;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  p {
+    font-size: 20px;
+ 
+  }
