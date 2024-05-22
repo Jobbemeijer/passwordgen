@@ -50,6 +50,21 @@ function shuffle(array) {
   return array;
 }
 
+// Functie om wachtwoord letter voor letter weer te geven
+function displayPasswordLetterByLetter(password) {
+  const passwordDisplay = document.getElementById("passwordDisplay");
+  passwordDisplay.value = '';
+  let i = 0;
+  function addNextLetter() {
+    if (i < password.length) {
+      passwordDisplay.value += password[i];
+      i++;
+      setTimeout(addNextLetter, 100); // Tijdinterval van 100ms tussen elke letter
+    }
+  }
+  addNextLetter();
+}
+
 // Bijgewerkte functie om een wachtwoord te genereren, inclusief de complexiteitsfunctie
 function generatePassword() {
   let passwordArray = [];
@@ -109,8 +124,8 @@ function generatePassword() {
   const changeCount = document.getElementById("changeCount").value;
   generatedPassword = addComplexity(generatedPassword, changeCount);
 
-  // Werk wachtwoordweergave bij
-  document.getElementById("passwordDisplay").value = generatedPassword;
+  // Geef het gegenereerde wachtwoord letter voor letter weer
+  displayPasswordLetterByLetter(generatedPassword);
 
   // Controleer sterkte en geef weer
   const strength = checkStrength(generatedPassword);
