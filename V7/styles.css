@@ -92,6 +92,7 @@ h2 {
   justify-content: center; /* Horizontaal centreren van het pictogram */
   margin-left: -1px; /* Verwijder eventuele dubbele grens */
   padding: 0.375rem 0.75rem; /* Voeg padding toe om overeen te komen met het invoerveld */
+  color: #28a745
 }
 
 /* Password strength styling */
