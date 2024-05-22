@@ -146,6 +146,8 @@ function displayStrength(strength) {
 // Event listener voor de generate button
 document.getElementById("generateBtn").addEventListener("click", generatePassword);
 
+
+
 // Functie om het gegenereerde wachtwoord naar het klembord te kopiëren
 document.getElementById("copyBtn").addEventListener("click", function() {
   const passwordDisplay = document.getElementById("passwordDisplay");
