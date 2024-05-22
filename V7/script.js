@@ -21,6 +21,8 @@ function getSelectedWordTypes() {
   return selectedWordTypes;
 }
 
+
+
 // Functie om willekeurige letters te vervangen door speciale tekens op basis van complexiteitsniveau
 function addComplexity(generatedPassword, changeCount) {
   const replacements = { 'a': '@', 'e': '3', 'o': '0', 'i': '!', 's': '$' };
