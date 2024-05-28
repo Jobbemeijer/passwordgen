@@ -13,11 +13,28 @@ header {
   color: #fff;
   padding: 1rem 0;
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
   margin: 0;
   font-size: 2rem;
+}
+
+header .btn {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+}
+
+header .btn:hover {
+  background-color: #0056b3;
+  color: #fff;
 }
 
 /* Container styling */
