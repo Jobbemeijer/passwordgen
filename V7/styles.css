@@ -118,7 +118,7 @@ h2 {
 
 /* Copy button styling */
 .input-group-append .btn {
-  height: 100%; /* Vul de hoogte van de input-groep */
+  margin-top: 1rem; /* Vul de hoogte van de input-groep */
   display: flex;
   align-items: center; /* Verticaal centreren van de tekst */
   justify-content: center; /* Horizontaal centreren van het pictogram */
