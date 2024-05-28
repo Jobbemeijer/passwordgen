@@ -12,7 +12,7 @@
     <h1>Contact</h1>
   </header>
   <div class="container mt-5">
-    <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+    <form class="gform" method="POST" action="YOUR_SCRIPT_URL">
       <div class="form-group">
         <label for="name">Naam</label>
         <input type="text" class="form-control" id="name" name="name" required>
@@ -27,6 +27,9 @@
       </div>
       <button type="submit" class="btn btn-primary">Verstuur</button>
     </form>
+    <div class="thankyou_message" style="display:none;">
+      <h2>Dank u voor het contact opnemen! We reageren zo snel mogelijk.</h2>
+    </div>
   </div>
   <footer class="text-center py-3 mt-5">
     <p>&copy; 2024 Jouw Bedrijf. Alle rechten voorbehouden.</p>
@@ -34,5 +37,6 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script data-cfasync="false" type="text/javascript" src="form-submission-handler.js"></script>
 </body>
 </html>
