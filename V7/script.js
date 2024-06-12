@@ -1,4 +1,4 @@
-// Voeg event listeners toe aan sliders om hun bijbehorende spans bij te werken
+// Voeg event listeners toe aan sliders om hoeveelheid te updaten
 document.getElementById("count").addEventListener("input", function() {
   document.getElementById("countValue").textContent = this.value;
 });
@@ -11,7 +11,7 @@ document.getElementById("changeCount").addEventListener("input", function() {
   document.getElementById("changeCountValue").textContent = this.value;
 });
 
-// Functie om geselecteerde woordtypes op te halen
+// Welke woordtypen zijn geselecteerd
 function getSelectedWordTypes() {
   const selectedWordTypes = [];
   if (document.getElementById("animalsCheckbox").checked) selectedWordTypes.push("animals");
@@ -23,7 +23,8 @@ function getSelectedWordTypes() {
 
 
 
-// Functie om willekeurige letters te vervangen door speciale tekens op basis van complexiteitsniveau
+// Complexiteit functie
+// veranderd een A=@ E=3 O=0 I=! S=$
 function addComplexity(generatedPassword, changeCount) {
   const replacements = { 'a': '@', 'e': '3', 'o': '0', 'i': '!', 's': '$' };
   let indicesToReplace = [];
@@ -52,7 +53,7 @@ function shuffle(array) {
   return array;
 }
 
-// Functie om wachtwoord letter voor letter weer te geven
+// laat de wachtwoorden letter voor letter in de display typen
 function displayPasswordLetterByLetter(password) {
   const passwordDisplay = document.getElementById("passwordDisplay");
   passwordDisplay.value = '';
@@ -61,13 +62,14 @@ function displayPasswordLetterByLetter(password) {
     if (i < password.length) {
       passwordDisplay.value += password[i];
       i++;
-      setTimeout(addNextLetter, 100); // Tijdinterval van 100ms tussen elke letter
+      setTimeout(addNextLetter, 100); 
     }
   }
   addNextLetter();
 }
 
-// Bijgewerkte functie om een wachtwoord te genereren, inclusief de complexiteitsfunctie
+// de funtion om de wachtwoorden te genereren
+ 
 function generatePassword() {
   let passwordArray = [];
   // Haal de geselecteerde woordtypes en aantallen op
@@ -122,22 +124,12 @@ function generatePassword() {
   let generatedPassword = passwordArray.join("");
   generatedPassword = generatedPassword.charAt(0).toUpperCase() + generatedPassword.slice(1);
 
-  // Voeg complexiteitsfunctie toe
+  // geeft de opdracht om function addComplexity uit te voeren
   const changeCount = document.getElementById("changeCount").value;
   generatedPassword = addComplexity(generatedPassword, changeCount);
 
   // Geef het gegenereerde wachtwoord letter voor letter weer
   displayPasswordLetterByLetter(generatedPassword);
-
-  // Controleer sterkte en geef weer
-  const strength = checkStrength(generatedPassword);
-  displayStrength(strength);
-}
-
-// Placeholder functies om wachtwoordsterkte te controleren en weer te geven
-function checkStrength(password) {
-  // Voeg hier je eigen logica toe om de wachtwoordsterkte te controleren
-  return 'Sterk';
 }
 
 function displayStrength(strength) {
@@ -156,7 +148,7 @@ document.getElementById("copyBtn").addEventListener("click", function() {
   passwordDisplay.select();
   document.execCommand("copy");
 
-  // Toon de melding en laat deze vervagen
+  // laat zien dat het wachtwoord is gekopieerd en vervaag de popup
   const copyMessage = document.getElementById("copyMessage");
   copyMessage.style.display = "block";
   copyMessage.style.opacity = 1;

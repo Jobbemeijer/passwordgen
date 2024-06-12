@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="d-flex justify-content-between align-items-center py-3 px-4">
+    <a href="index.html" class="btn btn-secondary">Terug</a>
+    <h1>Contact</h1>
+  </header>
+  <div class="container mt-5">
+    <form class="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyg-ZPp4Fn9AOACP6oEkNMXI-qUFwaKOABLhuAn5oraHKc8P0u5o9KKt4qDxSLO5OI0/exec">
+      <div class="form-group">
+        <label for="name">Naam</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Bericht</label>
+        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Verstuur</button>
+    </form>
+    <div class="thankyou_message" style="display:none;">
+      <h2>Dank u voor het contact opnemen! We reageren zo snel mogelijk.</h2>
+    </div>
+  </div>
+  <footer class="text-center py-3 mt-5">
+    <p>&copy; 2024 Joppe Meijer</p>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script data-cfasync="false" type="text/javascript" src="form-submission-handler.js"></script>
+</body>
+</html>
